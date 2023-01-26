@@ -106,7 +106,7 @@ namespace Projeto_streaming
                 verificacao = int.TryParse(Console.ReadLine(),out num_Ep);
             }while(verificacao == false || (num_Ep<1 && num_Ep>=this.NumerodeEpisodios));
             this.episodioAtual = num_Ep;
-            System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
+            //System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
         }
     }
 }
