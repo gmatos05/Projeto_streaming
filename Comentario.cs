@@ -1,10 +1,13 @@
-namespace Streaming {
-    class Comentario{
-        public bool publicado{get;set;}
+namespace Projeto_streaming 
+{
+    public class Comentario
+    {
+        public DateTime data {get;set;}
         public string comentario{get;set;}
-        public Comentario(string comentario,bool publicado){
+        public Comentario(string comentario)
+        {
             this.comentario = comentario;
-            this.publicado = publicado;
+            data = DateTime.Now;
         }
     }
 }

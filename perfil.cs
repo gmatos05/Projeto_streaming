@@ -1,18 +1,20 @@
-namespace Streaming{
-    public class perfil
-    {       // Dados para perfil
+namespace Projeto_streaming
+{
+    public class Perfil
+    {       
+            
         public string NomeCliente { get; private set; }
-        public ulong CPF { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public string email { get; private set; }
-        public ulong Telefone { get; private set; }
-
-        public perfil(string NomeCliente,ulong CPF,DateTime DataNascimento,string email,ulong Telefone){
+        public string senha {get;private set;}
+        public List<Filme> minhaLista {get;set;}
+        public Perfil(string NomeCliente,DateTime DataNascimento,string email,string senha)
+        {
             this.NomeCliente = NomeCliente;
-            this.CPF = CPF;
             this.DataNascimento= DataNascimento;
             this.email = email;
-            this.Telefone = Telefone;
+            this.senha = senha;
+            List<Filme> minhaLista =new();
 
         }
     }

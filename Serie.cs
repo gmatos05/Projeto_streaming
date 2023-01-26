@@ -1,65 +1,83 @@
-namespace Streaming{
-    class Serie:Conteudo{
+namespace Projeto_streaming
+{
+    public class Serie : Conteudo
+    {
         //Propriedades
         public int NumerodeEpisodios{get;set;}
         public int episodioAtual{get;set;}
         public int NumerodeTemporada{get;set;}
         public int TemporadaAtual{get;set;}
         
+        public Serie (){
+            this.episodioAtual = 1;
+            this.TemporadaAtual = 1;
+        }
         //Metodos
-        public void NextEpisode(){
-            if(this.NumerodeEpisodios == this.episodioAtual ){
-                if(this.NumerodeTemporada == this.TemporadaAtual){
-                    System.Console.WriteLine("Este é o ultimo episodio, so da para voltar ou assista outra coisa");
+        public void NextEpisode()
+        {
+            if(this.NumerodeEpisodios == this.episodioAtual )
+            {
+                if(this.NumerodeTemporada == this.TemporadaAtual)
+                {
+                    System.Console.WriteLine("  Este é o ultimo episodio, so da para voltar ou assista outra coisa");
                 }
-                else{
-                    this.episodioAtual=1;
-                    this.TemporadaAtual +=1;
-                    System.Console.WriteLine($"Voce esta no {this.episodioAtual}º episodio  da temporada {this.NumerodeTemporada}");
+                else
+                {
+                    this.episodioAtual = 1;
+                    this.TemporadaAtual += 1;
+                    System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
                 }
                // this.episodioAtual = this.NumerodeEpisodios;
 
      
             }
-            else{
+            else
+            {
                 this.episodioAtual += 1;
+                System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
             }
         }
-        public void PrevEpisode(){
-            if(this.episodioAtual == 1 ){
-                if(this.TemporadaAtual == 1){
-                    System.Console.WriteLine($"Este é o {this.episodioAtual}º episodio, so há como avancar!  ");
+        public void PrevEpisode()
+        {
+            if(this.episodioAtual == 1)
+            {
+                if(this.TemporadaAtual == 1)
+                {
+                    System.Console.WriteLine($"  Este é o {this.episodioAtual}º episodio, so há como avancar!");
                 }
-                else{
-                    this.episodioAtual = this.NumerodeEpisodios;
-                    this.TemporadaAtual -=1;
-                    System.Console.WriteLine($"Voce esta no {this.episodioAtual}º episodio  da temporada {this.NumerodeTemporada}");
+                else
+                {
+                    this.episodioAtual = this.NumerodeEpisodios; //Pq episodioAtual recebe numeroDeEpisodios?
+                    this.TemporadaAtual -= 1;
+                    System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
                 }
-               // this.episodioAtual = this.NumerodeEpisodios;
-
-     
+               // this.episodioAtual = this.NumerodeEpisodios;     
             }
-            else{
+            else
+            {
                 this.episodioAtual -= 1;
+                System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
             }
         }
         public void NextSeason(){
             if(this.NumerodeTemporada == this.TemporadaAtual){
-                System.Console.WriteLine("Voce esta na ultima temporada,voce so pode voltar");
+                System.Console.WriteLine("  Voce esta na ultima temporada,voce so pode voltar");
             }
             else{
                 this.TemporadaAtual+=1;
                 EscolherEpisodio();
+                System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
                 
             }
         }
         public void PrevSeason(){
             if(this.TemporadaAtual == 1){
-                System.Console.WriteLine($"Voce esta na {this.TemporadaAtual}º temporada,voce so pode avancar");
+                System.Console.WriteLine($"  Voce esta na {this.TemporadaAtual}º temporada,voce so pode avancar");
             }
             else{
                 this.TemporadaAtual-=1;     
                 EscolherEpisodio();
+                System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
             }
         }
         public void EscolherSeason(){
@@ -75,6 +93,7 @@ namespace Streaming{
             }while(verificacao == false || (num_Temp>1 && num_Temp<=this.NumerodeTemporada));
             this.TemporadaAtual = num_Temp;
             EscolherEpisodio();
+        
         }
         public void EscolherEpisodio(){
             bool verificacao;
@@ -85,8 +104,9 @@ namespace Streaming{
                     System.Console.WriteLine($"{i}º Episodio");
                 }
                 verificacao = int.TryParse(Console.ReadLine(),out num_Ep);
-            }while(verificacao == false || (num_Ep>1 && num_Ep<=this.NumerodeEpisodios));
+            }while(verificacao == false || (num_Ep<1 && num_Ep>=this.NumerodeEpisodios));
             this.episodioAtual = num_Ep;
+            System.Console.WriteLine($"  Voce esta no {this.episodioAtual}º episodio  da temporada {this.TemporadaAtual}");
         }
     }
 }
